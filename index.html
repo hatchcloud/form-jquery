@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Semana  DOS Jquery</title>
+</head>
+<body>
+    <h1>Formulario</h1>
+    <div id="grid-container">
+        <!DOCTYPE html>
+<html>
+<head>
+  <title>Formulario</title>
+</head>
+<body>
+    <form class="formulario">
+        <div>
+          <input type="text" id="nombre" placeholder="Nombre" class="verificar-campo">
+          <label for="nombre">Nombre</label>
+        </div>
+        <div>
+          <input type="text" id="apellido" placeholder="Apellido" class="verificar-campo">
+          <label for="apellido">Apellido</label>
+        </div>
+        <div>
+          <input type="email" id="email" placeholder="Email" class="verificar-campo"> 
+          <label for="email">Email</label>
+          <span id="error-email" style="display: none;" class="error-mensaje">Ingrese un correo electrónico válido.</span>
+        </div>
+        <div>
+          <input type="tel" id="telefono" placeholder="Teléfono" class="verificar-campo">
+          <label for="telefono">Teléfono</label>
+        </div>
+        <div>
+          <input type="text" id="direccion" placeholder="Dirección" class="verificar-campo">
+          <label for="direccion">Dirección</label>
+        </div>
+        <button type="submit" id="submit">Enviar formulario</button>
+      </form>
+
+    </div>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./js/jquery.js" charset="UTF-8"></script>
+    <script>
+        $(document).ready(pagina_lista());
+
+        function pagina_lista(){
+
+            $(document).on('keydown', 'form input', function(e) {
+            if (e.keyCode == 13) {
+              e.preventDefault();
+              return false;
+            }
+            });
+
+            //campo Nombre
+            $('#nombre').blur(function() {
+              if($('#nombre').val()){
+                $(this).siblings('label').addClass('label-with-value');
+                $(this).addClass('exito-input');
+                $(this).removeClass('error');
+              }else{
+                console.log('no tiene')
+                $(this).siblings('label').removeClass('label-with-value');
+                $(this).removeClass('exito-input');
+              }
+            });
+
+            //campo Apellido
+            $('#apellido').blur(function() {
+              if($('#apellido').val()){
+                $(this).siblings('label').addClass('label-with-value');
+                $(this).addClass('exito-input');
+                $(this).removeClass('error');
+              }else{
+                console.log('no tiene')
+                $(this).siblings('label').removeClass('label-with-value');
+                $(this).removeClass('exito-input');
+              }
+            });
+
+            let emailError = $('#error-email');
+            //campo email
+            $('#email').blur(function() {
+              if($('#email').val()){
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test($('#email').val())) {
+                  emailError.show();
+                  $('#email').addClass('error');
+                  $(this).siblings('label').addClass('label-with-error');
+                } else {
+                  emailError.hide();
+                  $('#email').removeClass('error');
+                }
+                $(this).siblings('label').addClass('label-with-value');
+                $(this).addClass('exito-input');
+              }else{
+                emailError.hide();
+                $('#email').removeClass('error');
+                $(this).siblings('label').removeClass('label-with-value');
+                $(this).siblings('label').removeClass('label-with-error');
+                $(this).removeClass('exito-input');
+              }
+            });
+            
+            //campo telefono
+            $('#telefono').blur(function() {
+              if($('#telefono').val()){
+                $(this).siblings('label').addClass('label-with-value');
+                $(this).addClass('exito-input');
+                $(this).removeClass('error');
+              }else{
+                console.log('no tiene')
+                $(this).siblings('label').removeClass('label-with-value');
+                $(this).removeClass('exito-input');
+              }
+            });
+            
+
+            //campo direccion
+            $('#direccion').blur(function() {
+              if($('#direccion').val()){
+                $(this).siblings('label').addClass('label-with-value');
+                $(this).addClass('exito-input');
+                $(this).removeClass('error');
+              }else{
+                console.log('no tiene')
+                $(this).siblings('label').removeClass('label-with-value');
+                $(this).removeClass('exito-input');
+              }
+            });
+
+
+            //btn submit
+            $('#submit').click(function(event) {
+            event.preventDefault(); 
+            
+            let camposLlenos = true;
+            
+            // Verificar que todos los campos estén llenos
+            $('.verificar-campo').each(function() {
+              if ($(this).val() === '') {
+                camposLlenos = false;
+                $(this).addClass('error');
+              } else {
+                $(this).removeClass('error');
+              }
+            });
+            
+            // Si todos los campos están llenos, enviar el formulario
+            if (camposLlenos) {
+              if (emailError.is(':visible')) {
+                $('#email').addClass('error');
+                swal({
+                  title: "Error",
+                  text: "Por favor, ingrese un correo válido.",
+                  icon: "error",
+                });
+              }else{
+                $('.formulario').submit();
+                swal("Éxito", "¡Formulario Enviado!", "success");
+              }
+            } else {
+              swal({
+                title: "Error",
+                text: "Por favor, llene todos los campos.",
+                icon: "error",
+              });
+            }
+          });
+      
+        }
+        
+    </script>
+</body>
+</html>

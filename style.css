@@ -1,0 +1,103 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    place-content: center; 
+}
+
+#grid-container{
+    width: 400px;
+}
+
+input {
+    height: 40px;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #222222;
+    border: none;
+    border-bottom: 2px solid #6c6b75;
+    outline: none;
+    background: transparent;
+    position: absolute;
+    top: 15px;
+}
+
+input:focus{
+    border-bottom: 4px solid #4338ca;
+}
+
+input:focus ~ label{
+    transition: .5s;
+    transform: translateY(-25px);
+    left: 0;
+    color: #706e6e;
+    font-size: 14px;
+}
+
+
+.label-with-value{
+    transform: translateY(-25px);
+    left: 0;
+    color: #000000;
+    font-size: 14px;
+}
+
+.exito-input{
+    border-bottom: 2px solid #07e463;
+}
+
+.error{
+    border-bottom: 2px dotted #e40707;
+}
+
+.error-mensaje{
+    color: rgb(228, 7, 7);
+    position: absolute;
+    top: 80px;
+    font-size: 12px;
+}
+
+
+.label-with-error{
+    transform: translateY(-25px);
+    left: 0;
+    color: rgb(228, 7, 7);
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+
+
+.formulario div {
+    position: relative;
+    height: 55px;
+    margin-bottom: 30px;
+}
+
+.formulario div label {
+    position: absolute;
+    top: 40px;
+    left: 0;
+}
+
+button {
+    background-color: #222222;
+    padding: 10px 40px;
+    border: none ;
+    border-radius: 20px;
+    margin-top: 40px;
+    max-width: 230px;
+    color: aliceblue;
+}
+
+button:hover {
+    background-color: #131313;
+    cursor: pointer;
+}
